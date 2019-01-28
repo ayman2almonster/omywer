@@ -342,15 +342,18 @@ client.on('message', message => {
     }
 });
 
-client.on('ready', () => {
-   console.log(`----------------`);
-      console.log(`Desert Bot- Script By : EX Clan`);
-        console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
-    console.log(`----------------`);
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`&play | Last Music by Ayman ALmonster`,"http://twitch.tv/Death Shop")
-client.user.setStatus("dnd")
+
+
+const gamestats = [`&play!`,`BOT Music!`,``,``]
+var index = 0
+var timer = 10 // الوقت بالثواني لتغير الستريمنق
+client.on("ready", ()=> {
+        setInterval(function(){
+        client.user.setGame(`${gamestats[index]}`,'https://www.twitch.tv/ACMBOT') 
+        index++
+            if( index >= gamestats.length) index = 0 ;
+        }, timer*1000);
+
 });
 
 client.login(process.env.BOT_TOKEN);
